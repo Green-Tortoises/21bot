@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/playing_cards.png" type="Texture" id=1]
+[ext_resource path="res://Cards/Card.gd" type="Script" id=2]
+
+[node name="Card" type="Control"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -0.249992 )
+scale = Vector2( 0.35, 0.350926 )
+texture = ExtResource( 1 )
+hframes = 13
+vframes = 4
+frame = 18

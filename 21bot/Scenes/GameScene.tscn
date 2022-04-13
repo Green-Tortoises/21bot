@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/unknown.png" type="Texture" id=1]
+[ext_resource path="res://Cards/Card.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Fonts/Button.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Scenes/GameScene.gd" type="Script" id=4]
+
+[node name="GameScene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+card = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+stretch_mode = 1
+
+[node name="Player" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -63.5
+margin_right = 63.5
+alignment = 2
+
+[node name="Cards" type="HBoxContainer" parent="Player"]
+margin_top = 500.0
+margin_right = 127.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/separation = 127
+alignment = 1
+
+[node name="Card" parent="Player/Cards" instance=ExtResource( 2 )]
+margin_bottom = 100.0
+
+[node name="Card2" parent="Player/Cards" instance=ExtResource( 2 )]
+margin_left = 127.0
+margin_right = 127.0
+margin_bottom = 100.0
+curr_card_type = 4
+
+[node name="Options" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -68.5
+margin_right = 68.5
+custom_constants/separation = 14
+alignment = 1
+
+[node name="HitCard" type="Button" parent="Options"]
+margin_top = 263.0
+margin_right = 137.0
+margin_bottom = 293.0
+custom_fonts/font = ExtResource( 3 )
+text = "Hit card"
+
+[node name="Stop" type="Button" parent="Options"]
+margin_top = 307.0
+margin_right = 137.0
+margin_bottom = 337.0
+custom_fonts/font = ExtResource( 3 )
+text = "Stop"
+
+[connection signal="pressed" from="Options/HitCard" to="." method="_on_HitCard_pressed"]

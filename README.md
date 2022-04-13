@@ -1,2 +1,2 @@
-# IA-plays-blackjack
+# 21bot
 A godot game for playing blackjack with an AI

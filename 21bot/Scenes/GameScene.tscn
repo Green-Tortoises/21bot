@@ -18,16 +18,14 @@ texture = ExtResource( 1 )
 stretch_mode = 1
 
 [node name="Player" type="VBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -63.5
-margin_right = 63.5
 alignment = 2
 
 [node name="Cards" type="HBoxContainer" parent="Player"]
+margin_left = 448.0
 margin_top = 500.0
-margin_right = 127.0
+margin_right = 575.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 0, 100 )
 size_flags_horizontal = 4
@@ -42,7 +40,8 @@ margin_bottom = 100.0
 margin_left = 127.0
 margin_right = 127.0
 margin_bottom = 100.0
-curr_card_type = 4
+curr_card_suit = 2
+curr_card_type = 6
 
 [node name="Options" type="VBoxContainer" parent="."]
 anchor_left = 0.5

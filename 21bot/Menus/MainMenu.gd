@@ -1,7 +1,7 @@
 extends Control
 
 func _on_NewGame_pressed():
-	get_tree().change_scene("res://Scenes/GameScene.tscn")
+	var _err = get_tree().change_scene("res://Scenes/GameScene.tscn")
 
 func _on_Settings_pressed():
 	pass # Replace with function body.

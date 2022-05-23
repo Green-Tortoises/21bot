@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "CardDeck",
 "language": "GDScript",
 "path": "res://Cards/CardDeck.gd"
+}, {
+"base": "VBoxContainer",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Player/Player.gd"
 } ]
 _global_script_class_icons={
 "Card": "",
-"CardDeck": ""
+"CardDeck": "",
+"Player": ""
 }
 
 [application]

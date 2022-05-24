@@ -33,7 +33,7 @@ var rng = RandomNumberGenerator.new()
 func _ready() -> void:
 	card_sprite.frame = curr_card_suit * 13 + curr_card_type
 	
-func get_card_value() -> int:
+func get_card_type() -> int:
 	return curr_card_type
 	
 func randomize_card() -> void:

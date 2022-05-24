@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "VBoxContainer",
 "class": "Player",
 "language": "GDScript",
-"path": "res://Player/Player.gd"
+"path": "res://Players/Player.gd"
 } ]
 _global_script_class_icons={
 "Card": "",

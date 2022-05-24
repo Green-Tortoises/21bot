@@ -5,7 +5,7 @@
 [ext_resource path="res://Fonts/Button.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Scenes/GameScene.gd" type="Script" id=4]
 [ext_resource path="res://Assets/CardFont.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://Player/Player.gd" type="Script" id=6]
+[ext_resource path="res://Players/Player.gd" type="Script" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 outline_size = 2
@@ -19,6 +19,7 @@ script = ExtResource( 4 )
 card = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 1 )
@@ -38,6 +39,27 @@ margin_bottom = 600.0
 rect_min_size = Vector2( 0, 100 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
+custom_constants/separation = 127
+alignment = 1
+
+[node name="Bot" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Bot"]
+margin_right = 1024.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 0, 95 )
+
+[node name="Cards" type="HBoxContainer" parent="Bot"]
+margin_left = 512.0
+margin_top = 99.0
+margin_right = 512.0
+margin_bottom = 199.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
 custom_constants/separation = 127
 alignment = 1
 
@@ -101,3 +123,4 @@ custom_fonts/font = ExtResource( 3 )
 text = "Stop"
 
 [connection signal="pressed" from="Options/HitCard" to="." method="_on_HitCard_pressed"]
+[connection signal="pressed" from="Options/Stop" to="." method="_on_Stop_pressed"]

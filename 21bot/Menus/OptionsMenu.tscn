@@ -1,0 +1,90 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Fonts/Button.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/CardFont.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Menus/OptionsMenu.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[node name="Options" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.4, 0.811765, 0.803922, 1 )
+
+[node name="Center" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="OptionsBox" type="ColorRect" parent="Center"]
+margin_left = 262.0
+margin_top = 50.0
+margin_right = 762.0
+margin_bottom = 550.0
+rect_min_size = Vector2( 500, 500 )
+color = Color( 0.137255, 0.117647, 0.117647, 1 )
+
+[node name="Options" type="VBoxContainer" parent="Center/OptionsBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 17
+
+[node name="VSplit" type="VSplitContainer" parent="Center/OptionsBox/Options"]
+margin_right = 500.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+
+[node name="Title" type="Label" parent="Center/OptionsBox/Options"]
+margin_top = 32.0
+margin_right = 500.0
+margin_bottom = 56.0
+custom_fonts/font = ExtResource( 1 )
+text = "Options"
+align = 1
+
+[node name="Title2" type="Label" parent="Center/OptionsBox/Options"]
+margin_top = 73.0
+margin_right = 500.0
+margin_bottom = 93.0
+custom_fonts/font = SubResource( 1 )
+text = "   A.I Model"
+
+[node name="ModelSelection" type="OptionButton" parent="Center/OptionsBox/Options"]
+margin_left = 25.0
+margin_top = 110.0
+margin_right = 475.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 450, 0 )
+size_flags_horizontal = 4
+
+[node name="BackToMenu" type="VBoxContainer" parent="Center/OptionsBox/Options"]
+margin_top = 147.0
+margin_right = 500.0
+margin_bottom = 500.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 2
+
+[node name="Button" type="Button" parent="Center/OptionsBox/Options/BackToMenu"]
+margin_left = 25.0
+margin_top = 304.0
+margin_right = 475.0
+margin_bottom = 334.0
+rect_min_size = Vector2( 450, 0 )
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 1 )
+text = "Back to menu"
+
+[node name="VSplit" type="VSplitContainer" parent="Center/OptionsBox/Options/BackToMenu"]
+margin_top = 338.0
+margin_right = 500.0
+margin_bottom = 353.0
+rect_min_size = Vector2( 0, 15 )
+
+[connection signal="item_selected" from="Center/OptionsBox/Options/ModelSelection" to="." method="_on_ModelSelection_item_selected"]
+[connection signal="pressed" from="Center/OptionsBox/Options/BackToMenu/Button" to="." method="_on_Button_pressed"]

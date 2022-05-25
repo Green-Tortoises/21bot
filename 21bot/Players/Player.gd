@@ -33,8 +33,8 @@ func add_card(card : Card) -> String:
 
 	if card_type == Card.CardType.Ace:
 		
-		print(minimum_score)
-		print(maximum_score)
+		#print(minimum_score)
+		#rint(maximum_score)
 		
 		if maximum_score + 11 <= 21:
 			minimum_score += ACE_MINIMUM_VALUE
@@ -47,10 +47,10 @@ func add_card(card : Card) -> String:
 			scoreboard = str(minimum_score)
 	else:
 		
-		print(minimum_score)
-		print(maximum_score)
+		#print(minimum_score)
+		#print(maximum_score)
 		
-		print(maximum_score + card_score)
+		#print(maximum_score + card_score)
 		
 		if maximum_score != minimum_score and maximum_score + card_score <= 21:
 			

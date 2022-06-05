@@ -2,6 +2,7 @@ extends VBoxContainer
 class_name Player
 
 onready var cards = $Cards
+onready var tween = $Tween
 
 var scoreboard : String  = ""
 var minimum_score : int = 0
@@ -9,6 +10,8 @@ var maximum_score : int = 0
 
 const ACE_MINIMUM_VALUE = 1
 const ACE_MAXIMUM_VALUE = 11
+
+var number_of_cards = 0
 
 func _ready():
 	pass # Replace with function body.
@@ -24,7 +27,9 @@ func remove_cards():
 
 func add_card(card : Card) -> String:
 
+	print(number_of_cards)
 	cards.add_child(card)
+	number_of_cards += 1
 	cards.alignment = 1 # AlignCenter	
 	
 	var card_type = card.get_card_type()

@@ -1,13 +1,14 @@
 extends Node
 
 enum AiModels {
-	Expectiminmax,
+	Expectiminimax,
 	Genetic_Algorithm
+	Counting_Card
 }
 
 const AI_FOLDER = "AI"
 
-var selected_model = AiModels.Expectiminmax
+var selected_model = AiModels.Expectiminimax
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

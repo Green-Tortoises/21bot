@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/21Bot.jpg-33c8d24b9b3f86a5da4b01524daad6e1.stex"
+path="res://.import/game-scene.jpg-2f501d5095fc3af195ff2b134685a781.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/21Bot.jpg"
-dest_files=[ "res://.import/21Bot.jpg-33c8d24b9b3f86a5da4b01524daad6e1.stex" ]
+source_file="res://Assets/game-scene.jpg"
+dest_files=[ "res://.import/game-scene.jpg-2f501d5095fc3af195ff2b134685a781.stex" ]
 
 [params]
 

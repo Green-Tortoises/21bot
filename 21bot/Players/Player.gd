@@ -2,7 +2,6 @@ extends VBoxContainer
 class_name Player
 
 onready var cards = $Cards
-onready var tween = $Tween
 
 var scoreboard : String  = ""
 var minimum_score : int = 0

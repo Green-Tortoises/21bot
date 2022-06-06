@@ -1,21 +1,33 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Fonts/Button.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/CardFont.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Menus/OptionsMenu.gd" type="Script" id=3]
+[ext_resource path="res://Assets/options_menu.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://Assets/CardFont.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 12
+font_data = SubResource( 3 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 4 )
 
 [node name="Options" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.4, 0.811765, 0.803922, 1 )
+texture = ExtResource( 4 )
+expand = true
 
 [node name="Center" type="CenterContainer" parent="."]
 anchor_right = 1.0
@@ -27,7 +39,7 @@ margin_top = 50.0
 margin_right = 762.0
 margin_bottom = 550.0
 rect_min_size = Vector2( 500, 500 )
-color = Color( 0.137255, 0.117647, 0.117647, 1 )
+color = Color( 0.137255, 0.117647, 0.117647, 0.937255 )
 
 [node name="Options" type="VBoxContainer" parent="Center/OptionsBox"]
 anchor_right = 1.0
@@ -47,7 +59,7 @@ custom_fonts/font = ExtResource( 1 )
 text = "Options"
 align = 1
 
-[node name="Title2" type="Label" parent="Center/OptionsBox/Options"]
+[node name="AIModel" type="Label" parent="Center/OptionsBox/Options"]
 margin_top = 73.0
 margin_right = 500.0
 margin_bottom = 93.0
@@ -58,12 +70,34 @@ text = "   A.I Model"
 margin_left = 25.0
 margin_top = 110.0
 margin_right = 475.0
-margin_bottom = 130.0
+margin_bottom = 131.0
 rect_min_size = Vector2( 450, 0 )
 size_flags_horizontal = 4
+theme = SubResource( 2 )
+
+[node name="CardDealing" type="Label" parent="Center/OptionsBox/Options"]
+margin_top = 148.0
+margin_right = 500.0
+margin_bottom = 168.0
+custom_fonts/font = SubResource( 1 )
+text = "   Card Dealing Timer"
+
+[node name="CardDealingTimer" type="HSlider" parent="Center/OptionsBox/Options"]
+margin_left = 25.0
+margin_top = 185.0
+margin_right = 475.0
+margin_bottom = 201.0
+rect_min_size = Vector2( 450, 0 )
+size_flags_horizontal = 4
+min_value = 0.1
+max_value = 5.0
+step = 0.1
+value = 0.1
+tick_count = 5
+ticks_on_borders = true
 
 [node name="BackToMenu" type="VBoxContainer" parent="Center/OptionsBox/Options"]
-margin_top = 147.0
+margin_top = 218.0
 margin_right = 500.0
 margin_bottom = 500.0
 size_flags_horizontal = 3
@@ -72,19 +106,20 @@ alignment = 2
 
 [node name="Button" type="Button" parent="Center/OptionsBox/Options/BackToMenu"]
 margin_left = 25.0
-margin_top = 304.0
+margin_top = 233.0
 margin_right = 475.0
-margin_bottom = 334.0
+margin_bottom = 263.0
 rect_min_size = Vector2( 450, 0 )
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 text = "Back to menu"
 
 [node name="VSplit" type="VSplitContainer" parent="Center/OptionsBox/Options/BackToMenu"]
-margin_top = 338.0
+margin_top = 267.0
 margin_right = 500.0
-margin_bottom = 353.0
+margin_bottom = 282.0
 rect_min_size = Vector2( 0, 15 )
 
 [connection signal="item_selected" from="Center/OptionsBox/Options/ModelSelection" to="." method="_on_ModelSelection_item_selected"]
+[connection signal="value_changed" from="Center/OptionsBox/Options/CardDealingTimer" to="." method="_on_CardDealingTimer_value_changed"]
 [connection signal="pressed" from="Center/OptionsBox/Options/BackToMenu/Button" to="." method="_on_Button_pressed"]

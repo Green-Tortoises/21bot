@@ -1,6 +1,7 @@
 extends Control
 
 export(PackedScene) var card
+export(PackedScene) var game_over_scene
 
 """
 Player variables
@@ -29,17 +30,24 @@ Control variables
 onready var options_buttons_box = $Options
 
 func _ready():
+	randomize()
 	
 	set_deck_of_cards()
 	
 	_add_card_to_player()
 	_add_card_to_player()
 	
-func reset_game():
+func _reset_game():
 	
 	set_deck_of_cards()
 	
 	player.remove_cards()
+	bot.remove_cards()
+	
+	bot_scoreboard    = "0"
+	_update_bot_score_text()
+	
+	options_buttons_box.visible = true
 	
 	_add_card_to_player()
 	_add_card_to_player()
@@ -61,8 +69,16 @@ Bot functions
 """
 func start_bot_turn():
 	
-	while bot.minimum_score < 21:
+	while bot.maximum_score < 21 and bot.maximum_score <= player.maximum_score:
 		_add_card_to_bot()
+		yield(get_tree().create_timer(GameSettings.card_timer), "timeout")
+		
+	var winner = GameOver.State.PlayerWins
+		
+	if bot.minimum_score <= 21 and bot.maximum_score > player.maximum_score:
+		winner = GameOver.State.BotWins
+		
+	_show_game_over_screen(winner)
 
 func _add_card_to_bot():
 	
@@ -84,7 +100,7 @@ func set_deck_of_cards():
 			card_instance.curr_card_suit = suit
 			card_instance.curr_card_type = type
 			cards_deck.append(card_instance)	
-			
+		
 	cards_deck.shuffle()
 
 """
@@ -94,8 +110,30 @@ func _on_HitCard_pressed():
 	_add_card_to_player()
 	
 	if player.minimum_score > 21:
-		reset_game()
-	
+		_show_game_over_screen(GameOver.State.BotWins)
+		
 func _on_Stop_pressed():
 	options_buttons_box.visible = false
 	start_bot_turn()
+
+"""
+Keyboard input handling
+"""
+func _input(event):
+	
+	if event.is_action_pressed("ui_home"):
+		_quit_game()
+
+func _quit_game():
+	var _err = get_tree().change_scene("res://Menus/MainMenu.tscn")
+	
+func _show_game_over_screen(winner):
+	var game_over_scene_instance : GameOver = game_over_scene.instance()
+		
+	var _err  = game_over_scene_instance.connect("reset_game",self,"_reset_game")
+	var _err2 = game_over_scene_instance.connect("quit_game",self,"_quit_game")
+	
+	game_over_scene_instance.winner = winner
+	
+	get_tree().get_root().call_deferred("add_child",game_over_scene_instance)
+	

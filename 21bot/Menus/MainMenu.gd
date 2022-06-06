@@ -1,8 +1,5 @@
 extends Control
 
-func _ready():
-	print(ModelController.run_ai())
-
 func _on_NewGame_pressed():
 	var _err = get_tree().change_scene("res://Scenes/GameScene.tscn")
 

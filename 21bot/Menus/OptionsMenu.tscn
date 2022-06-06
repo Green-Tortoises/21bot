@@ -96,8 +96,50 @@ value = 0.1
 tick_count = 5
 ticks_on_borders = true
 
-[node name="BackToMenu" type="VBoxContainer" parent="Center/OptionsBox/Options"]
+[node name="MusicVolume" type="Label" parent="Center/OptionsBox/Options"]
 margin_top = 218.0
+margin_right = 500.0
+margin_bottom = 238.0
+custom_fonts/font = SubResource( 1 )
+text = "   Music Volume:"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="Center/OptionsBox/Options"]
+margin_left = 25.0
+margin_top = 255.0
+margin_right = 475.0
+margin_bottom = 271.0
+rect_min_size = Vector2( 450, 0 )
+size_flags_horizontal = 4
+min_value = -80.0
+max_value = 6.0
+step = 0.1
+value = 0.1
+tick_count = 5
+ticks_on_borders = true
+
+[node name="SFXVolume" type="Label" parent="Center/OptionsBox/Options"]
+margin_top = 288.0
+margin_right = 500.0
+margin_bottom = 308.0
+custom_fonts/font = SubResource( 1 )
+text = "   SFX Volume:"
+
+[node name="SFXVolumeSlider" type="HSlider" parent="Center/OptionsBox/Options"]
+margin_left = 25.0
+margin_top = 325.0
+margin_right = 475.0
+margin_bottom = 341.0
+rect_min_size = Vector2( 450, 0 )
+size_flags_horizontal = 4
+min_value = -80.0
+max_value = 6.0
+step = 0.1
+value = 0.1
+tick_count = 5
+ticks_on_borders = true
+
+[node name="BackToMenu" type="VBoxContainer" parent="Center/OptionsBox/Options"]
+margin_top = 358.0
 margin_right = 500.0
 margin_bottom = 500.0
 size_flags_horizontal = 3
@@ -106,18 +148,18 @@ alignment = 2
 
 [node name="Button" type="Button" parent="Center/OptionsBox/Options/BackToMenu"]
 margin_left = 25.0
-margin_top = 233.0
+margin_top = 93.0
 margin_right = 475.0
-margin_bottom = 263.0
+margin_bottom = 123.0
 rect_min_size = Vector2( 450, 0 )
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 text = "Back to menu"
 
 [node name="VSplit" type="VSplitContainer" parent="Center/OptionsBox/Options/BackToMenu"]
-margin_top = 267.0
+margin_top = 127.0
 margin_right = 500.0
-margin_bottom = 282.0
+margin_bottom = 142.0
 rect_min_size = Vector2( 0, 15 )
 
 [connection signal="item_selected" from="Center/OptionsBox/Options/ModelSelection" to="." method="_on_ModelSelection_item_selected"]

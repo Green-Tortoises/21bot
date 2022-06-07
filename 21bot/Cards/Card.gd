@@ -49,3 +49,19 @@ func set_card_type(card_type : int) -> void:
 	
 func _set_card() -> void:
 	card_sprite.frame = curr_card_suit * 13 + curr_card_type
+	
+func toMap() -> Dictionary:
+	
+	var card_value = convert_card_value_to_int(curr_card_type)
+	
+	if curr_card_type == CardType.Ace:
+		card_value = 11
+	
+	return {
+		"type"  : curr_card_type,
+		"suit"  : CardSuits.keys()[curr_card_suit],
+		"value" : card_value
+	}
+	
+static func convert_card_value_to_int(card_value):
+	return int(min(card_value,9) + 1)

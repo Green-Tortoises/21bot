@@ -34,8 +34,15 @@ func _ready():
 	
 	set_deck_of_cards()
 	
+	_initial_draw()
+
+func _initial_draw():
+
 	_add_card_to_player()
 	_add_card_to_player()
+	
+	_add_card_to_bot()
+	_add_card_to_bot()
 	
 func _reset_game():
 	
@@ -49,8 +56,7 @@ func _reset_game():
 	
 	options_buttons_box.visible = true
 	
-	_add_card_to_player()
-	_add_card_to_player()
+	_initial_draw()
 
 """
 Player functions
@@ -69,7 +75,7 @@ Bot functions
 """
 func start_bot_turn():
 	
-	while bot.maximum_score < 21 and bot.maximum_score <= player.maximum_score:
+	while ModelController.predict(bot,player) == ModelController.Actions.Hit:
 		_add_card_to_bot()
 		yield(get_tree().create_timer(GameSettings.card_timer), "timeout")
 		

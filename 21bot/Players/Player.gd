@@ -12,13 +12,13 @@ const ACE_MAXIMUM_VALUE = 11
 
 var number_of_cards = 0
 
-func _ready():
-	pass # Replace with function body.
+var cards_list = [] setget , get_cards_list
 
 func remove_cards():
 	
 	self.minimum_score = 0
 	self.maximum_score = 0
+	cards_list.clear()
 	
 	for card in cards.get_children():
 		cards.remove_child(card)
@@ -26,14 +26,14 @@ func remove_cards():
 
 func add_card(card : Card) -> String:
 
-	print(number_of_cards)
 	cards.add_child(card)
+	cards_list.append(card.toMap())
 	number_of_cards += 1
 	cards.alignment = 1 # AlignCenter	
 	
 	var card_type = card.get_card_type()
 
-	var card_score = convert_card_value_to_int(card_type)
+	var card_score = Card.convert_card_value_to_int(card_type)
 
 	if card_type == Card.CardType.Ace:
 		
@@ -70,6 +70,21 @@ func add_card(card : Card) -> String:
 
 	return scoreboard
 
+func get_cards_list():
+	return cards_list.duplicate(true)
 	
-func convert_card_value_to_int(card_value):
-	return int(min(card_value,9) + 1)
+func get_hand_value():
+	var sum = 0
+	
+	for card in cards_list:
+		sum += card["value"]
+		
+	return sum
+
+func get_hand_value_list():
+	var cards = []
+	
+	for card in cards_list:
+		cards.append(card["value"])
+		
+	return cards
